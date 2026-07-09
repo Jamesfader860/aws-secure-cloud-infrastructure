@@ -28,22 +28,22 @@ The diagram below illustrates the dual-state infrastructure configuration modele
 To establish an operational baseline, a secure virtual server (`prod-backend-...`) was provisioned within `us-east-1a`. To track environment assets and identity control, a dedicated IAM user (`engineering-dev-user`) and a storage bucket (`dev-application-assets-james`) were established.
 
 <p align="center">
-  <img src="images/environment-created.png" width="85%" alt="EC2 Instance Deployment" />
+  <img src="images/01-environment-created.png" width="85%" alt="EC2 Instance Deployment" />
 </p>
 <p align="center"><i>Figure 1: Successful deployment of the production backend EC2 instance in us-east-1a.</i></p>
 
 <p align="center">
-  <img src="images/iam-users-created.png" width="85%" alt="IAM User Provisioning" />
+  <img src="images/02-iam-users-created.png" width="85%" alt="IAM User Provisioning" />
 </p>
 <p align="center"><i>Figure 2: IAM Management Console showing the newly provisioned engineering-dev-user.</i></p>
 
 <p align="center">
-  <img src="images/s3-bucket-created.png" width="85%" alt="S3 Bucket Creation" />
+  <img src="images/03-s3-bucket-created.png" width="85%" alt="S3 Bucket Creation" />
 </p>
 <p align="center"><i>Figure 3: Amazon S3 dashboard confirming creation of the target asset bucket.</i></p>
 
 <p align="center">
-  <img src="images/admin-policy-attached.png" width="85%" alt="IAM Permissions Baseline" />
+  <img src="images/04-admin-policy-attached.png" width="85%" alt="IAM Permissions Baseline" />
 </p>
 <p align="center"><i>Figure 4: Initial user permission state with attached administrative and standard read-only policies.</i></p>
 
