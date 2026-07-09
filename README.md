@@ -21,12 +21,11 @@ The diagram below illustrates the dual-state infrastructure configuration modele
   <img src="images/arch-diagram-before-after.png" width="100%" alt="AWS Security Audit Architecture Diagram">
   <p><i>Figure 0: Comprehensive Project Architecture Blueprint showing Vulnerable vs. Remediated States.</i></p>
 </div>
+
 ---
 
 ## 🚀 Phase 1: Environment Baseline & Monitoring Setup
-To establish an operational baseline, a secure virtual server (`dev-web-app-node`) was provisioned with an attached EBS block storage volume. Administrative SSH access was locked down strictly to the engineer's deployment IP address.
-
-To capture host-level operational data, an Amazon CloudWatch logs agent was configured inside the instance to stream live application logs directly into a centralized CloudWatch repository.
+To establish an operational baseline, a secure virtual server (`prod-backend-...`) was provisioned within `us-east-1a`. To track environment assets and identity control, a dedicated IAM user (`engineering-dev-user`) and a storage bucket (`dev-application-assets-james`) were established.
 
 <div align="center">
   <img src="images/environment-created.png" width="85%" alt="EC2 Instance Deployment">
@@ -38,9 +37,6 @@ To capture host-level operational data, an Amazon CloudWatch logs agent was conf
   <p><i>Figure 2: IAM Management Console showing the newly provisioned engineering-dev-user.</i></p>
 </div>
 
-### 🚨 Operational Incident Simulation
-A CloudWatch metric alarm was implemented to track backend application stability. To test monitoring reliability and incident response mechanisms, an operational failure was intentionally triggered by executing a `pkill gunicorn` command on the backend web server process, causing an intentional alarm breach due to a sudden performance and latency spike.
-
 <div align="center">
   <img src="images/s3-bucket-created.png" width="85%" alt="S3 Bucket Creation">
   <p><i>Figure 3: Amazon S3 dashboard confirming creation of the target asset bucket.</i></p>
@@ -51,10 +47,14 @@ A CloudWatch metric alarm was implemented to track backend application stability
   <p><i>Figure 4: Initial user permission state with attached administrative and standard read-only policies.</i></p>
 </div>
 
+### 🚨 Operational Incident Simulation
+A CloudWatch metric alarm was implemented to track backend application stability. To test monitoring reliability and incident response mechanisms, an operational failure was intentionally triggered by executing a `pkill gunicorn` command on the backend web server process, causing an intentional alarm breach due to a sudden performance and latency spike.
+
 <div align="center">
   <img src="images/latency-spike-graph.png" width="85%" alt="CloudWatch Latency Incident Metric Graph">
   <p><i>Figure 4b: CloudWatch Metric Graph illustrating the application latency spike and alarm breach during simulated server failure.</i></p>
 </div>
+
 ---
 
 ## 💥 Phase 2: Simulating Production Security Risks
