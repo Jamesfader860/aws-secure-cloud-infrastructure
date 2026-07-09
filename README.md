@@ -29,12 +29,12 @@ To establish an operational baseline, a secure virtual server (`dev-web-app-node
 To capture host-level operational data, an Amazon CloudWatch logs agent was configured inside the instance to stream live application logs directly into a centralized CloudWatch repository.
 
 <div align="center">
-  <img src="images/01-secure-ssh-rule.png" width="85%" alt="Secure SSH Configuration">
+  <img src="images/01-environment-created.png" width="85%" alt="Secure SSH Configuration">
   <p><i>Figure 1: Initial secure infrastructure state restricting port 22 access.</i></p>
 </div>
 
 <div align="center">
-  <img src="images/02-log-agent-logs.png" width="85%" alt="CloudWatch Logs Stream">
+  <img src="images/02-iam-users-created.png" width="85%" alt="CloudWatch Logs Stream">
   <p><i>Figure 2: CloudWatch console confirming active log stream from the agent.</i></p>
 </div>
 
@@ -42,15 +42,19 @@ To capture host-level operational data, an Amazon CloudWatch logs agent was conf
 A CloudWatch metric alarm was implemented to track backend application stability. To test monitoring reliability and incident response mechanisms, an operational failure was intentionally triggered by executing a `pkill gunicorn` command on the backend web server process, causing an intentional alarm breach due to a sudden performance and latency spike.
 
 <div align="center">
-  <img src="images/03-alarm-creation.png" width="85%" alt="CloudWatch Alarm Threshold">
+  <img src="images/03-s3-bucket-created.png" width="85%" alt="CloudWatch Alarm Threshold">
   <p><i>Figure 3: Configuration of the CloudWatch metric alarm threshold.</i></p>
 </div>
 
 <div align="center">
-  <img src="images/04-alarm-breached.png" width="85%" alt="Alarm Breach Triggered">
+  <img src="images/04-admin-policy-attached.png" width="85%" alt="Alarm Breach Triggered">
   <p><i>Figure 4: CloudWatch console displaying an active 'ALARM' state post-incident.</i></p>
 </div>
 
+<div align="center">
+  <img src="images/latency-spike-graph.png" width="85%" alt="CloudWatch Latency Incident Metric Graph">
+  <p><i>Figure 4b: CloudWatch Metric Graph illustrating the application latency spike during simulated server failure.</i></p>
+</div>
 ---
 
 ## 💥 Phase 2: Simulating Production Security Risks
