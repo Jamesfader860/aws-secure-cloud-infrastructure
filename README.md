@@ -29,31 +29,31 @@ To establish an operational baseline, a secure virtual server (`dev-web-app-node
 To capture host-level operational data, an Amazon CloudWatch logs agent was configured inside the instance to stream live application logs directly into a centralized CloudWatch repository.
 
 <div align="center">
-  <img src="images/01-environment-created.png" width="85%" alt="Secure SSH Configuration">
-  <p><i>Figure 1: Initial secure infrastructure state restricting port 22 access.</i></p>
+  <img src="images/environment-created.png" width="85%" alt="EC2 Instance Deployment">
+  <p><i>Figure 1: Successful deployment of the production backend EC2 instance in us-east-1a.</i></p>
 </div>
 
 <div align="center">
-  <img src="images/02-iam-users-created.png" width="85%" alt="CloudWatch Logs Stream">
-  <p><i>Figure 2: CloudWatch console confirming active log stream from the agent.</i></p>
+  <img src="images/iam-users-created.png" width="85%" alt="IAM User Provisioning">
+  <p><i>Figure 2: IAM Management Console showing the newly provisioned engineering-dev-user.</i></p>
 </div>
 
 ### 🚨 Operational Incident Simulation
 A CloudWatch metric alarm was implemented to track backend application stability. To test monitoring reliability and incident response mechanisms, an operational failure was intentionally triggered by executing a `pkill gunicorn` command on the backend web server process, causing an intentional alarm breach due to a sudden performance and latency spike.
 
 <div align="center">
-  <img src="images/03-s3-bucket-created.png" width="85%" alt="CloudWatch Alarm Threshold">
-  <p><i>Figure 3: Configuration of the CloudWatch metric alarm threshold.</i></p>
+  <img src="images/s3-bucket-created.png" width="85%" alt="S3 Bucket Creation">
+  <p><i>Figure 3: Amazon S3 dashboard confirming creation of the target asset bucket.</i></p>
 </div>
 
 <div align="center">
-  <img src="images/04-admin-policy-attached.png" width="85%" alt="Alarm Breach Triggered">
-  <p><i>Figure 4: CloudWatch console displaying an active 'ALARM' state post-incident.</i></p>
+  <img src="images/admin-policy-attached.png" width="85%" alt="IAM Permissions Baseline">
+  <p><i>Figure 4: Initial user permission state with attached administrative and standard read-only policies.</i></p>
 </div>
 
 <div align="center">
   <img src="images/latency-spike-graph.png" width="85%" alt="CloudWatch Latency Incident Metric Graph">
-  <p><i>Figure 4b: CloudWatch Metric Graph illustrating the application latency spike during simulated server failure.</i></p>
+  <p><i>Figure 4b: CloudWatch Metric Graph illustrating the application latency spike and alarm breach during simulated server failure.</i></p>
 </div>
 ---
 
